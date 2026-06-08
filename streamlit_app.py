@@ -18,8 +18,24 @@ if st.button('Submit Guess'):
     st.write('You Guessed ', str(guess))
     if guess < st.session_state.secret:
         st.warning('Sorry, too low!')
+        lightning_html = """
+        <style>
+        #bolt {position:fixed; left:50%; top:30%; transform:translate(-50%,-50%); font-size:120px; color:#ffd700; text-shadow:0 0 10px #fff, 0 0 40px #ffd700; animation: flash 900ms ease-in-out 0s 3; pointer-events:none; z-index:1000000;}
+        @keyframes flash {0%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}20%{opacity:1;transform:translate(-50%,-50%) scale(1.05);}60%{opacity:1;transform:translate(-50%,-50%) scale(0.95);}100%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}}
+        </style>
+        <div id="bolt">⚡</div>
+        """
+        html(lightning_html, height=150)
     elif guess > st.session_state.secret:
         st.warning ('Sorry, too high!')
+        lightning_html = """
+        <style>
+        #bolt {position:fixed; left:50%; top:30%; transform:translate(-50%,-50%); font-size:120px; color:#ffd700; text-shadow:0 0 10px #fff, 0 0 40px #ffd700; animation: flash 900ms ease-in-out 0s 3; pointer-events:none; z-index:1000000;}
+        @keyframes flash {0%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}20%{opacity:1;transform:translate(-50%,-50%) scale(1.05);}60%{opacity:1;transform:translate(-50%,-50%) scale(0.95);}100%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}}
+        </style>
+        <div id="bolt">⚡</div>
+        """
+        html(lightning_html, height=150)
     else:
                 st.success('Yay! You guessed it')
                 # firework/confetti effect using canvas-confetti (CDN)
