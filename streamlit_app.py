@@ -18,24 +18,34 @@ if st.button('Submit Guess'):
     st.write('You Guessed ', str(guess))
     if guess < st.session_state.secret:
         st.warning('Sorry, too low!')
-        lightning_html = """
+        arrow_html = """
         <style>
-        #bolt {position:fixed; left:50%; top:30%; transform:translate(-50%,-50%); font-size:120px; color:#ffd700; text-shadow:0 0 10px #fff, 0 0 40px #ffd700; animation: flash 900ms ease-in-out 0s 3; pointer-events:none; z-index:1000000;}
-        @keyframes flash {0%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}20%{opacity:1;transform:translate(-50%,-50%) scale(1.05);}60%{opacity:1;transform:translate(-50%,-50%) scale(0.95);}100%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}}
+        #arrow {position:fixed; left:50%; top:30%; transform:translate(-50%,-50%); width:120px; height:120px; pointer-events:none; z-index:1000000; animation: bounce 800ms ease-in-out 0s 3;}
+        @keyframes bounce {0%{transform:translate(-50%,-50%) scale(0.6); opacity:0}30%{transform:translate(-50%,-60%) scale(1.1); opacity:1}60%{transform:translate(-50%,-50%) scale(0.95); opacity:1}100%{transform:translate(-50%,-50%) scale(0.6); opacity:0}}
+        svg{width:100%;height:100%;filter:drop-shadow(0 0 8px rgba(0,0,0,0.5));}
         </style>
-        <div id="bolt">⚡</div>
+        <div id="arrow">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 4l-8 8h5v8h6v-8h5l-8-8z" fill="#00AEEF"/>
+          </svg>
+        </div>
         """
-        html(lightning_html, height=150)
+        html(arrow_html, height=150)
     elif guess > st.session_state.secret:
         st.warning ('Sorry, too high!')
-        lightning_html = """
+        arrow_html = """
         <style>
-        #bolt {position:fixed; left:50%; top:30%; transform:translate(-50%,-50%); font-size:120px; color:#ffd700; text-shadow:0 0 10px #fff, 0 0 40px #ffd700; animation: flash 900ms ease-in-out 0s 3; pointer-events:none; z-index:1000000;}
-        @keyframes flash {0%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}20%{opacity:1;transform:translate(-50%,-50%) scale(1.05);}60%{opacity:1;transform:translate(-50%,-50%) scale(0.95);}100%{opacity:0;transform:translate(-50%,-50%) scale(0.6);}}
+        #arrow {position:fixed; left:50%; top:30%; transform:translate(-50%,-50%); width:120px; height:120px; pointer-events:none; z-index:1000000; animation: bounce 800ms ease-in-out 0s 3;}
+        @keyframes bounce {0%{transform:translate(-50%,-50%) scale(0.6); opacity:0}30%{transform:translate(-50%,-40%) scale(1.1); opacity:1}60%{transform:translate(-50%,-50%) scale(0.95); opacity:1}100%{transform:translate(-50%,-50%) scale(0.6); opacity:0}}
+        svg{width:100%;height:100%;filter:drop-shadow(0 0 8px rgba(0,0,0,0.5));}
         </style>
-        <div id="bolt">⚡</div>
+        <div id="arrow">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 20l8-8h-5v-8h-6v8H4l8 8z" fill="#FF3B30"/>
+          </svg>
+        </div>
         """
-        html(lightning_html, height=150)
+        html(arrow_html, height=150)
     else:
                 st.success('Yay! You guessed it')
                 # firework/confetti effect using canvas-confetti (CDN)
